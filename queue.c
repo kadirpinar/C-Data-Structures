@@ -1,43 +1,42 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define SIZE 4
-int queue[SIZE];
-int top=0;
-void push(int a)
-{
-queue[top++]=a;
-}
-int pop(){
-top--;
-return queue[0];
-}
+#define MAX 4
 
-void transfer(){
-queue[0]=queue[1];
-queue[1]=queue[2];
-queue[2]=queue[3];
-queue[3]=queue[4];
+int queue[MAX];
+int top=-1;
+int top1=-1;
+int top2=3;
+void push(int a) {
+	queue[++top]=a;
 }
+int pop() {
+	return queue[0];
+}
+void ss(){
+	int b;
+	queue[0]=queue[1];
+	queue[1]=queue[2];
+	queue[2]=queue[3];
+	queue[3]=queue[++top2];	
+}
+int main(int argc, char *argv[]) {
 
-int main(){
-
-int number,i;
-int counter=0;
-while(1){
-printf("Enter a number");
-scanf("%d",&number);
-push(number);
-counter++;
-if(counter>SIZE){
-printf("Outgoing number %d \n",pop());
-transfer();
-for(i=0;i<SIZE;i++){
-printf("%d ",queue[i]);
+int i,b,c,counter;
+counter=0;
+    while(1){
+    printf("Enter a number");
+    scanf("%d",&b);
+    push(b);
+    counter++;
+    if (counter>MAX){
+     printf("Outgoing Number:%d\n",pop());
+     ss();
+    for(i=0;i<4;i++){
+    	printf("%d ",queue[i]);
 }
 printf("\n");
 }
 }
-
-return 0;
+system("PAUSE");
+	return 0;
 }
-
